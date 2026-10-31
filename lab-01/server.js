@@ -21,7 +21,9 @@ app.get("/about", (req, res) => {
 // Time route
 app.get("/time", (req, res) => {
     res.status(200).json({
-        currentDateTime: new Date()
+        currentDateTime: new Date().toLocaleString("en-IN", {
+    timeZone: "Asia/Kolkata"
+})
     });
 });
 

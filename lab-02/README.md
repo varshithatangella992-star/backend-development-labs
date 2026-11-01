@@ -1,13 +1,12 @@
 # LAB REPORT – 02
-
 # SQLite Database and CRUD Routes
 
 **Subject:** Backend Development Fundamentals  
 **Year:** II  
 **Term:** II  
 **Student Name:** Tangella Varshitha  
-**Registration Number:** 252U1R1238 
-**Section:** CSE-2E
+**Registration Number:** 252U1R1238  
+**Section:** CSE-2E  
 
 ## 1. Aim
 
@@ -30,6 +29,7 @@ To connect an Express.js server with an SQLite database and implement CRUD opera
 - SQLite3
 - Nodemon
 - Web Browser
+- PowerShell
 
 ## 4. Introduction
 
@@ -49,7 +49,7 @@ SQLite is a lightweight relational database used to store and manage data. Expre
 | price | INTEGER |
 | pages | INTEGER |
 
-The database contains 10 sample book records.
+The database was initially populated with 10 sample book records. Additional records were added, updated and deleted during CRUD testing.
 
 ## 6. Implementation
 
@@ -75,13 +75,41 @@ Parameterized queries with `?` placeholders are used to safely handle user input
 
 The Express server was successfully started on port 3000 and connected to the SQLite database.
 
-The GET `/books/` endpoint was tested in the browser. It successfully displayed 10 book records in JSON format.
+All five API endpoints were tested:
 
-The remaining POST, PUT and DELETE endpoints are implemented in the application and should be tested using an API testing tool.
+- **GET `/books/`** – Retrieved all book records.
+- **GET `/books/:bookId/`** – Retrieved a particular book using its ID.
+- **POST `/books/`** – Successfully added new book records.
+- **PUT `/books/:bookId/`** – Successfully updated book details.
+- **DELETE `/books/:bookId/`** – Successfully deleted a book record.
+
+The API responses were verified using a web browser and PowerShell. The output was returned in JSON format or as success messages.
+
+### Screenshots
+
+**1. GET All Books**
+
+![GET All Books](screenshots/get-all-books.png)
+
+**2. GET Book by ID**
+
+![GET Book by ID](screenshots/get-book-by-id.png)
+
+**3. POST – Add Book**
+
+![POST Add Book](screenshots/book-add.png)
+
+**4. PUT – Update Book**
+
+![PUT Update Book](screenshots/put-book.png)
+
+**5. DELETE – Delete Book**
+
+![DELETE Book](screenshots/delete-book.png)
 
 ## 9. Result
 
-The SQLite database was successfully connected with the Express.js server. The book table was created and 10 sample records were inserted. The GET all books endpoint returned the expected JSON output.
+The SQLite database was successfully connected with the Express.js server. The book table was created, and all five CRUD API operations were implemented and tested. Book records were added, retrieved, updated and deleted as expected.
 
 ## 10. Conclusion
 
@@ -89,23 +117,30 @@ This lab helped in understanding SQLite database connectivity, Express.js routin
 
 ## 11. Viva Questions
 
-**1. What is SQLite?**  
-SQLite is a lightweight relational database management system.
+**1. What is SQLite?**
 
-**2. What is CRUD?**  
+SQLite is a lightweight relational database management system used to store and manage data.
+
+**2. What is CRUD?**
+
 CRUD stands for Create, Read, Update and Delete.
 
-**3. What is the purpose of Express.js?**  
+**3. What is the purpose of Express.js?**
+
 Express.js is used to build web servers and REST APIs using Node.js.
 
-**4. Why do we use async and await?**  
+**4. Why do we use async and await?**
+
 They help handle asynchronous operations and wait for database operations to complete.
 
-**5. What is SQL injection?**  
+**5. What is SQL injection?**
+
 SQL injection is an attack where harmful SQL statements are inserted through user input.
 
-**6. Why do we use question mark placeholders?**  
+**6. Why do we use question mark placeholders?**
+
 They safely pass user input into SQL queries and help prevent SQL injection.
 
-**7. What is the difference between POST and PUT?**  
+**7. What is the difference between POST and PUT?**
+
 POST is generally used to create a new resource, while PUT is used to update an existing resource.

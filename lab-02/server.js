@@ -67,9 +67,65 @@ const initializeDBAndServer = async () => {
 };
 
 // GET all books
-app.get("/books/", async (req, res) => {
+// Home page
+app.get("/", async (req, res) => {
     const books = await db.all("SELECT * FROM book");
-    res.status(200).json(books);
+
+    let rows = books.map(book => `
+        <tr>
+            <td>${book.id}</td>
+            <td>${book.title}</td>
+            <td>${book.author}</td>
+            <td>₹${book.price}</td>
+            <td>${book.pages}</td>
+        </tr>
+    `).join("");
+
+    res.send(`
+        <html>
+        <head>
+            <title>Library Management - Books</title>
+            <style>
+                body {
+                    font-family: Arial;
+                    background: #f2f4f8;
+                    padding: 30px;
+                }
+                h1 {
+                    text-align: center;
+                    color: #243b64;
+                }
+                table {
+                    width: 100%;
+                    background: white;
+                    border-collapse: collapse;
+                }
+                th, td {
+                    padding: 14px;
+                    border: 1px solid #ddd;
+                    text-align: left;
+                }
+                th {
+                    background: #243b64;
+                    color: white;
+                }
+            </style>
+        </head>
+        <body>
+            <h1>Library Books Collection</h1>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Price</th>
+                    <th>Pages</th>
+                </tr>
+                ${rows}
+            </table>
+        </body>
+        </html>
+    `);
 });
 
 // GET one book

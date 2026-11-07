@@ -9,7 +9,92 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 let db;
+// GET books with search, sorting, pagination and price filters
+app.get("/books", async (req, res) => {
+    try {
+        const {
+            search_q,
+            order_by = "id",
+            order = "ASC",
+            limit = 10,
+            offset = 0,
+            min_price,
+            max_price
+        } = req.query;
 
+        const allowedColumns = ["id", "title", "author", "price", "pages"];
+
+        const sortColumn = allowedColumns.includes(order_by)
+            ? order_by
+            : "id";
+
+        const sortOrder = order.toUpperCase() === "DESC" ? "DESC" : "ASC";
+
+        let sql = "SELECT * FROM book WHERE 1=1";
+        let params = [];
+
+        if (search_q) {
+            sql += " AND title LIKE ?";
+            params.push(`%${search_q}%`);
+        }
+
+        if (min_price !== undefined) {
+            sql += " AND price >= ?";
+            params.push(Number(min_price));
+        }
+
+        if (max_price !== undefined) {
+            sql += " AND price <= ?";
+            params.push(Number(max_price));
+        }
+
+        sql += ` ORDER BY ${sortColumn} ${sortOrder} LIMIT ? OFFSET ?`;
+        params.push(Number(limit), Number(offset));
+
+        const books = await db.all(sql, params);
+
+        res.status(200).json({
+            message: "Books fetched successfully",
+            data: books
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            message: "Error fetching books"
+        });
+    }
+});
+// POST - Add a new book
+app.post("/books", async (req, res) => {
+    try {
+        const { title, author, price, pages } = req.body;
+
+        if (!title || !author || price === undefined ||
+            !Number.isFinite(Number(price))) {
+            return res.status(400).json({
+                message: "Title, author and valid price are required"
+            });
+        }
+
+        const result = await db.run(
+            "INSERT INTO book (title, author, price, pages) VALUES (?, ?, ?, ?)",
+            [title, author, Number(price), pages || 0]
+        );
+
+        res.status(201).json({
+            message: "Book created successfully",
+            id: result.lastID
+        });
+
+    } catch (error) {
+    console.error("POST Error:", error);
+
+    res.status(500).json({
+        message: "Failed to create book",
+        error: error.message
+    });
+}
+});
 // 1. GET: Display, search, sort and filter books
 app.get("/books", async (req, res) => {
     try {

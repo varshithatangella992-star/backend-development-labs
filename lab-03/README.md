@@ -295,7 +295,7 @@ The following screenshots demonstrate the testing of all major API operations us
 
 Retrieves all available book records from the SQLite database.
 
-![GET All Books](./screenshots/get-all-books.png)
+![GET All Books](screenshots/get-all-books.png)
 
 ### 13.2 Search Books
 

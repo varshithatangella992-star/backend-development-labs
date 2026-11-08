@@ -326,6 +326,7 @@ async function startServer() {
     console.log("Database connected successfully");
 
     
+
 app.get("/", (req, res) => {
     res.send(`
         <html>
@@ -340,13 +341,26 @@ app.get("/", (req, res) => {
             <p>Course: Backend Development Fundamentals</p>
             <p>Technologies: Node.js, Express.js, SQLite</p>
 
-            <h3>Available API Endpoints</h3>
+            <h3>API Endpoints and Operations</h3>
 
-            <p><a href="/books">GET All Books</a></p>
-            <p><a href="/books/1">GET Book by ID</a></p>
-            <p><a href="/books?search_q=Harry">Search Books</a></p>
-            <p><a href="/books?order_by=price&order=DESC">Sort Books</a></p>
-            <p><a href="/books?limit=5&offset=0">Pagination</a></p>
+            <h4>GET Operations</h4>
+            <p>GET /books - Get All Books</p>
+            <p>GET /books/:id - Get Book by ID</p>
+            <p>GET /books?search_q=Harry - Search Books</p>
+            <p>GET /books?order_by=price&order=DESC - Sort Books</p>
+            <p>GET /books?limit=5&offset=0 - Pagination</p>
+            <p>GET /books?min_price=200&max_price=400 - Filter Books</p>
+            <p>GET /books/99999 - Book Not Found</p>
+
+            <h4>POST Operations</h4>
+            <p>POST /books - Add New Book</p>
+            <p>POST /books - Validation Error</p>
+
+            <h4>PUT Operation</h4>
+            <p>PUT /books/1 - Update Book</p>
+
+            <h4>DELETE Operation</h4>
+            <p>DELETE /books/20 - Delete Book</p>
         </body>
         </html>
     `);

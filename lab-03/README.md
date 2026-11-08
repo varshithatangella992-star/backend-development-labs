@@ -5,202 +5,159 @@
 | Detail | Information |
 |---|---|
 | Name | Tangella Varshitha |
-| Registration Number | 252U1R1238|
+| Registration Number | 252U1R1238 |
 | Section | CSE – 2E |
 | Course | Backend Development Fundamentals |
-| Year and Term | Year II – Term II |
+| Year / Term | Year II – Term II |
 | Institution | Aurora – NIAT |
 | Faculty | Yugandhar |
+| Lab Number | Lab 3 |
 
-## 2. Project Overview
+## 2. Title
 
-This project focuses on developing a RESTful Book Management API using Node.js, Express.js and SQLite.
+**REST API, Query Parameters, Validation and Debugging using Node.js, Express.js and SQLite**
 
-The application provides different API endpoints to manage book records. It allows users to retrieve all books, search books by title, sort records, apply pagination, filter books based on price, retrieve a particular book by ID, add new books, update existing books and delete books.
+## 3. Objective
 
-The project also implements input validation and error handling to ensure that invalid data is not inserted into the database.
+The main objective of this lab is to develop a REST API using Node.js and Express.js. The application performs CRUD operations on book records stored in an SQLite database.
 
-Postman is used to test the API endpoints and verify the responses.
-
-## 3. Objectives
-
-- Develop REST API endpoints using Node.js and Express.js.
-- Implement GET, POST, PUT and DELETE methods.
-- Retrieve all book records from SQLite.
-- Search books using query parameters.
-- Implement sorting and pagination.
-- Filter books using minimum and maximum prices.
-- Retrieve individual books using their IDs.
-- Add, update and delete book records.
-- Validate user input.
-- Handle errors using appropriate HTTP status codes.
-- Test API functionality using Postman.
+This lab also demonstrates searching, sorting, filtering, pagination, input validation, error handling and debugging.
 
 ## 4. Technologies Used
 
 | Technology | Purpose |
 |---|---|
-| Node.js | JavaScript runtime environment |
-| Express.js | Backend web framework |
+| Node.js | Backend runtime environment |
+| Express.js | REST API development |
 | SQLite | Database management |
-| JavaScript | Backend programming language |
+| JavaScript | Backend programming |
+| VS Code | Code editor |
 | Postman | API testing |
-| Visual Studio Code | Code editor |
-| Git | Version control |
-| GitHub | Source code management |
-| Render | Backend deployment |
+| Render | Cloud deployment |
+| GitHub | Source code and project hosting |
 
 ## 5. Project Structure
 
 ```text
 lab-03/
 │
-├── screenshots/
-│   ├── get-all-books.png
-│   ├── search-books.png
-│   ├── sort-books.png
-│   ├── pagination.png
-│   ├── filter-books.png
-│   ├── get-book-by-id.png
-│   ├── post-book.png
-│   ├── validation-error.png
-│   ├── put-book.png
-│   ├── delete-book.png
-│   └── not-found.png
-│
-├── database.db
+├── server.js
 ├── package.json
 ├── package-lock.json
-├── server.js
-└── README.md
-
-Note: `node_modules/` contains installed dependencies and should not be uploaded to GitHub.
-
-## 6. Installation and Setup
-
-### Prerequisites
-
-- Node.js installed.
-- npm package manager.
-- Visual Studio Code.
-- Postman.
-
-### Step 1: Open the Lab 3 folder
-
-```bash
-cd "C:\Users\TANGELLA VARSHITHA\OneDrive\Pictures\varshi\Backend\lab-03"
+├── database.db
+├── README.md
+│
+└── screenshots/
+    ├── delete-book.png
+    ├── filter-books.png
+    ├── get-all-books.png
+    ├── get-book-by-id.png
+    ├── not-found.png
+    ├── pagination.png
+    ├── post-book.png
+    ├── put-book.png
+    ├── search-books.png
+    ├── sort-books.png
+    └── validation-error.png
 ```
 
-### Step 2: Install dependencies
+## 6. Application Deployment
 
-```bash
-npm install
-```
+The REST API is deployed using Render.
 
-### Step 3: Start the server
+| Detail | Information |
+|---|---|
+| Platform | Render |
+| Service Name | backend-development-labs-3-1kbm |
+| Root Directory | lab-03 |
+| Build Command | npm install |
+| Start Command | node server.js |
+| Deployment URL | https://backend-development-labs-3-1kbm.onrender.com |
 
-```bash
-node server.js
-```
+**Live Application:**  
+https://backend-development-labs-3-1kbm.onrender.com
 
-### Step 4: Expected terminal output
+## 7. Database Design
 
-```text
-Database connected successfully
-Server running on port 3000
-```
+The application uses an SQLite database named `database.db`.
 
-### Step 5: Access the API
-
-```text
-http://localhost:3000/books
-```
-
-## 7. Database Details
-
-The project uses SQLite to store book information.
-
-**Database File:** `database.db`
-
-**Table Name:** `book`
+The database contains a table named `book`.
 
 | Column | Data Type | Description |
 |---|---|---|
 | id | INTEGER | Unique book ID |
-| title | TEXT | Name of the book |
-| author | TEXT | Name of the author |
-| price | REAL | Price of the book |
+| title | TEXT | Book title |
+| author | TEXT | Author name |
+| price | REAL | Book price |
 | pages | INTEGER | Number of pages |
 
-The database stores book records and supports operations such as inserting, retrieving, updating and deleting records.
-
 ## 8. REST API Endpoints
-
-The following endpoints are implemented in the project.
 
 | HTTP Method | Endpoint | Description |
 |---|---|---|
 | GET | `/books` | Retrieve all books |
-| GET | `/books/:id` | Retrieve a book using its ID |
+| GET | `/books/:id` | Retrieve a book by ID |
 | POST | `/books` | Add a new book |
 | PUT | `/books/:id` | Update an existing book |
 | DELETE | `/books/:id` | Delete a book |
 
+### Live GET Endpoints
+
+**GET All Books**
+
+https://backend-development-labs-3-1kbm.onrender.com/books
+
+**GET Book by ID**
+
+https://backend-development-labs-3-1kbm.onrender.com/books/1
+
+**GET Not Found Test**
+
+https://backend-development-labs-3-1kbm.onrender.com/books/99999
+
 ## 9. Query Parameters
 
-The GET `/books` endpoint supports query parameters to retrieve book records in different ways.
+Query parameters are used to search, sort, filter and retrieve specific records from the database.
 
-| Parameter | Description |
-|---|---|
-| `search_q` | Search books by partial title |
-| `order_by` | Sort records using a selected column |
-| `order` | Sorting direction (ASC or DESC) |
-| `limit` | Maximum number of records |
-| `offset` | Number of records to skip |
-| `min_price` | Minimum book price |
-| `max_price` | Maximum book price |
+### 9.1 Search Books
 
-### Example Requests
+Search books using the book title.
 
-**Search Books**
+**Endpoint:**
 
-```text
-GET /books?search_q=Atomic
-```
+https://backend-development-labs-3-1kbm.onrender.com/books?search_q=Harry
 
-**Sort Books**
+### 9.2 Sort Books
 
-```text
-GET /books?order_by=price&order=DESC
-```
+Sort books according to their price in descending order.
 
-**Pagination**
+**Endpoint:**
 
-```text
-GET /books?limit=5&offset=0
-```
+https://backend-development-labs-3-1kbm.onrender.com/books?order_by=price&order=DESC
 
-**Price Filtering**
+### 9.3 Pagination
 
-```text
-GET /books?min_price=200&max_price=400
-```
+Retrieve a limited number of books using limit and offset.
+
+**Endpoint:**
+
+https://backend-development-labs-3-1kbm.onrender.com/books?limit=5&offset=0
+
+### 9.4 Filter Books by Price
+
+Retrieve books within a specified price range.
+
+**Endpoint:**
+
+https://backend-development-labs-3-1kbm.onrender.com/books?min_price=200&max_price=400
 
 ## 10. CRUD Operations
 
-### 10.1 GET – Retrieve All Books
+### 10.1 Create a Book – POST
 
-Retrieves all available book records from the SQLite database.
+Used to add a new book to the database.
 
-### 10.2 GET – Retrieve Book by ID
-
-Retrieves a particular book using its unique ID.
-
-### 10.3 POST – Add a New Book
-
-Adds a new book record to the database.
-
-Example request:
+**Request Body:**
 
 ```json
 {
@@ -211,32 +168,37 @@ Example request:
 }
 ```
 
-Successful response:
+**Successful Response:**
 
 ```json
 {
   "message": "Book created successfully",
-  "book": {
-    "id": 22,
-    "title": "The Secret",
-    "author": "Rhonda Byrne",
-    "price": 250,
-    "pages": 200
-  }
+  "id": 23
 }
 ```
 
-### 10.4 PUT – Update a Book
+### 10.2 Read Books – GET
 
-Updates the details of an existing book using its ID.
+Used to retrieve all available book records from the database.
 
-Example endpoint:
+### 10.3 Update a Book – PUT
 
-```text
-PUT /books/22
+Used to update the details of an existing book.
+
+**Endpoint:** `/books/1`
+
+**Request Body:**
+
+```json
+{
+  "title": "Updated Wings of Fire",
+  "author": "A.P.J. Abdul Kalam",
+  "price": 400,
+  "pages": 250
+}
 ```
 
-Successful response:
+**Successful Response:**
 
 ```json
 {
@@ -244,22 +206,31 @@ Successful response:
 }
 ```
 
-### 10.5 DELETE – Delete a Book
+### 10.4 Delete a Book – DELETE
 
-Deletes an existing book record using its ID.
+Used to delete an existing book using its ID.
+
+**Endpoint:** `/books/23`
+
+**Successful Response:**
+
+```json
+{
+  "message": "Book deleted successfully"
+}
+```
 
 ## 11. Input Validation
 
-Input validation is implemented in the POST endpoint to prevent invalid book details from being inserted.
+Input validation is used to ensure that the user provides valid information before inserting a book into the database.
 
-The API checks:
-
-- Title is provided.
-- Author is provided.
-- Price is provided.
+The application checks:
+- Book title is provided.
+- Author name is provided.
 - Price is a valid number.
+- Required fields are not empty.
 
-Example validation response:
+**Validation Error Response:**
 
 ```json
 {
@@ -267,154 +238,129 @@ Example validation response:
 }
 ```
 
-The API returns HTTP 400 Bad Request when the submitted details do not satisfy the validation conditions.
+## 12. Error Handling and Debugging
 
-## 12. HTTP Status Codes
+Error handling is implemented to manage invalid requests and missing book records.
 
-| Status Code | Meaning | Usage |
-|---|---|---|
-| 200 | OK | Successful GET, PUT and DELETE |
-| 201 | Created | Book successfully added |
-| 400 | Bad Request | Invalid input data |
-| 404 | Not Found | Book does not exist |
-| 500 | Internal Server Error | Unexpected server error |
+The application handles:
+- Invalid book IDs.
+- Missing required fields.
+- Invalid price values.
+- Book records that do not exist.
+- Database and server errors.
 
-Example response:
+## 13. Screenshots and Output Results
 
-```json
-{
-  "message": "Book not found"
-}
-```
-
-## 13. Postman API Testing Screenshots
-
-The following screenshots demonstrate the testing of all major API operations using Postman. All screenshot files are stored in the `screenshots` directory of the Lab 3 project.
+The following screenshots demonstrate the successful execution of the REST API operations.
 
 ### 13.1 GET All Books
 
-Retrieves all available book records from the SQLite database.
-
-![GET All Books](screenshots/get-all-books.png)
+![GET All Books](./screenshots/get-all-books.png)
 
 ### 13.2 Search Books
-
-Tests searching for books using the `search_q` query parameter.
 
 ![Search Books](./screenshots/search-books.png)
 
 ### 13.3 Sort Books
 
-Tests sorting book records by price in descending order.
-
 ![Sort Books](./screenshots/sort-books.png)
 
-### 13.4 Pagination
-
-Tests retrieving a limited number of book records using the `limit` and `offset` parameters.
-
-![Pagination](./screenshots/pagination.png)
-
-### 13.5 Filter Books
-
-Tests filtering book records using minimum and maximum price values.
+### 13.4 Filter Books
 
 ![Filter Books](./screenshots/filter-books.png)
 
-### 13.6 GET Book by ID
+### 13.5 Pagination
 
-Tests retrieving an individual book using its unique ID.
+![Pagination](./screenshots/pagination.png)
+
+### 13.6 GET Book by ID
 
 ![GET Book by ID](./screenshots/get-book-by-id.png)
 
-### 13.7 POST – Add New Book
-
-Tests adding a new book record using the POST method.
+### 13.7 POST – Add a New Book
 
 ![POST Book](./screenshots/post-book.png)
 
-### 13.8 POST – Validation Error
-
-Tests invalid request data and verifies the HTTP 400 Bad Request response.
-
-![Validation Error](./screenshots/validation-error.png)
-
-### 13.9 PUT – Update Book
-
-Tests updating an existing book record using the PUT method.
+### 13.8 PUT – Update a Book
 
 ![PUT Book](./screenshots/put-book.png)
 
-### 13.10 DELETE – Delete Book
-
-Tests deleting an existing book record using the DELETE method.
+### 13.9 DELETE – Delete a Book
 
 ![DELETE Book](./screenshots/delete-book.png)
 
-### 13.11 GET – Book Not Found
+### 13.10 Validation Error
 
-Tests retrieving a non-existing book and verifies the HTTP 404 Not Found response.
+![Validation Error](./screenshots/validation-error.png)
 
-![Book Not Found](./screenshots/not-found.png)
-## 14. Debugging and Error Handling
+### 13.11 Not Found Error
 
-During development, different errors were encountered and resolved.
+![Not Found](./screenshots/not-found.png)
 
-| Error | Explanation | Solution |
-|---|---|---|
-| ECONNREFUSED | Server was not running | Started the Node.js server |
-| Cannot POST | Incorrect HTTP method or endpoint | Checked the Postman method and URL |
-| 400 Bad Request | Invalid request body | Provided valid book details |
-| 404 Not Found | Requested book ID does not exist | Checked the book ID |
-| EADDRINUSE | Port already in use | Stopped the existing server process |
+## 14. Testing
 
-Try-catch blocks are used to handle errors and return JSON responses.
+The API was tested using Postman and the deployed Render application.
 
-## 15. Deployment
+The following operations were tested:
 
-The application is planned to be deployed using Render.
+1. Retrieving all books.
+2. Retrieving a book using its ID.
+3. Adding a new book.
+4. Updating an existing book.
+5. Deleting a book.
+6. Searching books using query parameters.
+7. Sorting books by price.
+8. Filtering books by price range.
+9. Retrieving records using pagination.
+10. Testing validation and error responses.
 
-### Deployment Configuration
+## 15. Results
 
-| Setting | Value |
-|---|---|
-| Service Type | Web Service |
-| Runtime | Node.js |
-| Root Directory | `lab-03` |
-| Build Command | `npm install` |
-| Start Command | `node server.js` |
+The REST API was successfully developed and deployed.
 
-**Live API URL:**
+The application performs CRUD operations and supports searching, sorting, filtering and pagination. Input validation and error handling were also tested successfully.
 
-To be updated after successful deployment.
+The deployed application can be accessed through the Render URL.
 
-Note: SQLite data stored on a Render service's local filesystem may not persist after restarts or redeployments. Persistent storage or a managed database is recommended if data must be retained.
+**Deployment URL:**  
+https://backend-development-labs-3-1kbm.onrender.com
 
 ## 16. Learning Outcomes
 
 Through this lab, I learned:
 
-- How to create RESTful APIs using Node.js and Express.js.
+- How to create REST APIs using Node.js and Express.js.
+- How to connect an SQLite database.
 - How to perform CRUD operations.
-- How to work with SQLite databases.
 - How to use query parameters.
-- How to implement search, sorting and pagination.
-- How to filter records based on price.
-- How to validate request data.
-- How to handle errors and HTTP status codes.
+- How to implement searching, sorting and filtering.
+- How to implement pagination.
+- How to validate user input.
+- How to handle errors and debug API requests.
 - How to test APIs using Postman.
-- How to debug backend applications.
+- How to deploy a backend application using Render.
 
 ## 17. Conclusion
 
-This lab provided practical experience in developing a Book Management REST API using Node.js, Express.js and SQLite.
+This lab helped me understand the practical implementation of REST APIs using Node.js, Express.js and SQLite. I successfully implemented CRUD operations, query parameters, validation and error handling.
 
-By implementing GET, POST, PUT and DELETE operations, I gained an understanding of how backend applications manage data. I also learned how query parameters can be used for searching, sorting, pagination and filtering.
+The application was tested and deployed using Render. This lab improved my understanding of backend development and database operations.
 
-Testing the API using Postman helped me understand request handling, input validation, error responses and HTTP status codes.
+## 18. Project Links
 
-Overall, this lab improved my practical knowledge of REST API development, database operations and backend debugging.
+**GitHub Repository:**  
+https://github.com/varshithatangella992-star/backend-development-labs
 
-## 18. GitHub Repository
+**Render Deployment:**  
+https://backend-development-labs-3-1kbm.onrender.com
 
-Repository: [Add your GitHub repository link here]
+**Live GET All Books API:**  
+https://backend-development-labs-3-1kbm.onrender.com/books
+
+---
+
+**Submitted by:** Tangella Varshitha  
+**Registration Number:** 252U1R1238  
+**Section:** CSE – 2E  
+**Course:** Backend Development Fundamentals  
+**Institution:** Aurora – NIAT

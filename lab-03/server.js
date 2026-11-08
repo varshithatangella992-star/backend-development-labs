@@ -325,6 +325,34 @@ async function startServer() {
 
     console.log("Database connected successfully");
 
+    
+app.get("/", (req, res) => {
+    res.send(`
+        <html>
+        <head>
+            <title>Backend Development Lab 3</title>
+        </head>
+        <body>
+            <h1>Backend Development Lab - 03</h1>
+            <h2>Book Management REST API</h2>
+
+            <p>Student Name: Tangella Varshitha</p>
+            <p>Course: Backend Development Fundamentals</p>
+            <p>Technologies: Node.js, Express.js, SQLite</p>
+
+            <h3>Available API Endpoints</h3>
+
+            <p><a href="/books">GET All Books</a></p>
+            <p><a href="/books/1">GET Book by ID</a></p>
+            <p><a href="/books?search_q=Harry">Search Books</a></p>
+            <p><a href="/books?order_by=price&order=DESC">Sort Books</a></p>
+            <p><a href="/books?limit=5&offset=0">Pagination</a></p>
+        </body>
+        </html>
+    `);
+});
+
+
    app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server running on port ${PORT}`);
 });

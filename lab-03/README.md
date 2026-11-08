@@ -5,12 +5,12 @@
 | Detail | Information |
 |---|---|
 | Name | Tangella Varshitha |
-| Registration Number | [Enter Registration Number] |
+| Registration Number | 252U1R1238|
 | Section | CSE – 2E |
 | Course | Backend Development Fundamentals |
 | Year and Term | Year II – Term II |
 | Institution | Aurora – NIAT |
-| Faculty | Joel Prashanth D |
+| Faculty | Yugandhar |
 
 ## 2. Project Overview
 
@@ -53,29 +53,26 @@ Postman is used to test the API endpoints and verify the responses.
 ## 5. Project Structure
 
 ```text
-Backend/
+lab-03/
 │
-└── lab-03/
-    │
-    ├── screenshots/
-    │   ├── get-all-books.png
-    │   ├── search-books.png
-    │   ├── sort-books.png
-    │   ├── pagination.png
-    │   ├── filter-books.png
-    │   ├── get-book-by-id.png
-    │   ├── post-book.png
-    │   ├── validation-error.png
-    │   ├── put-book.png
-    │   ├── delete-book.png
-    │   └── not-found.png
-    │
-    ├── database.db
-    ├── package.json
-    ├── package-lock.json
-    ├── server.js
-    └── README.md
-```
+├── screenshots/
+│   ├── get-all-books.png
+│   ├── search-books.png
+│   ├── sort-books.png
+│   ├── pagination.png
+│   ├── filter-books.png
+│   ├── get-book-by-id.png
+│   ├── post-book.png
+│   ├── validation-error.png
+│   ├── put-book.png
+│   ├── delete-book.png
+│   └── not-found.png
+│
+├── database.db
+├── package.json
+├── package-lock.json
+├── server.js
+└── README.md
 
 Note: `node_modules/` contains installed dependencies and should not be uploaded to GitHub.
 
@@ -290,76 +287,75 @@ Example response:
 }
 ```
 
-## 13. Postman API Testing
+## 13. Postman API Testing Screenshots
 
-Postman is used to test the different API endpoints and verify the responses.
+The following screenshots demonstrate the testing of all major API operations using Postman. All screenshot files are stored in the `screenshots` directory of the Lab 3 project.
 
 ### 13.1 GET All Books
 
-Retrieves all books stored in the database.
+Retrieves all available book records from the SQLite database.
 
-Screenshot: `get-all-books.png`
+![GET All Books](./screenshots/get-all-books.png)
 
 ### 13.2 Search Books
 
-Tests searching books using the `search_q` parameter.
+Tests searching for books using the `search_q` query parameter.
 
-Screenshot: `search-books.png`
+![Search Books](./screenshots/search-books.png)
 
 ### 13.3 Sort Books
 
-Tests sorting books by price in descending order.
+Tests sorting book records by price in descending order.
 
-Screenshot: `sort-books.png`
+![Sort Books](./screenshots/sort-books.png)
 
 ### 13.4 Pagination
 
-Tests retrieving a limited number of books using limit and offset.
+Tests retrieving a limited number of book records using the `limit` and `offset` parameters.
 
-Screenshot: `pagination.png`
+![Pagination](./screenshots/pagination.png)
 
 ### 13.5 Filter Books
 
-Tests filtering books based on minimum and maximum prices.
+Tests filtering book records using minimum and maximum price values.
 
-Screenshot: `filter-books.png`
+![Filter Books](./screenshots/filter-books.png)
 
 ### 13.6 GET Book by ID
 
-Retrieves an individual book using its ID.
+Tests retrieving an individual book using its unique ID.
 
-Screenshot: `get-book-by-id.png`
+![GET Book by ID](./screenshots/get-book-by-id.png)
 
 ### 13.7 POST – Add New Book
 
-Tests adding a new book using the POST method.
+Tests adding a new book record using the POST method.
 
-Screenshot: `post-book.png`
+![POST Book](./screenshots/post-book.png)
 
 ### 13.8 POST – Validation Error
 
-Tests invalid input and verifies the validation error response.
+Tests invalid request data and verifies the HTTP 400 Bad Request response.
 
-Screenshot: `validation-error.png`
+![Validation Error](./screenshots/validation-error.png)
 
 ### 13.9 PUT – Update Book
 
-Tests updating an existing book using the PUT method.
+Tests updating an existing book record using the PUT method.
 
-Screenshot: `put-book.png`
+![PUT Book](./screenshots/put-book.png)
 
 ### 13.10 DELETE – Delete Book
 
-Tests deleting a book using the DELETE method.
+Tests deleting an existing book record using the DELETE method.
 
-Screenshot: `delete-book.png`
+![DELETE Book](./screenshots/delete-book.png)
 
 ### 13.11 GET – Book Not Found
 
-Tests retrieving a book that does not exist and verifies the error response.
+Tests retrieving a non-existing book and verifies the HTTP 404 Not Found response.
 
-Screenshot: `not-found.png`
-
+![Book Not Found](./screenshots/not-found.png)
 ## 14. Debugging and Error Handling
 
 During development, different errors were encountered and resolved.

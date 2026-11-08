@@ -325,7 +325,7 @@ async function startServer() {
 
     console.log("Database connected successfully");
 
-    app.listen(PORT, "0.0.0.0", () => {
+   app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server running on port ${PORT}`);
 });
 }

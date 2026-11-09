@@ -74,8 +74,6 @@ The REST API is deployed using Render.
 | Start Command | node server.js |
 | Deployment URL | https://backend-development-labs-3-1kbm.onrender.com |
 
-**Live Application:**  
-https://backend-development-labs-3-1kbm.onrender.com
 
 ## 7. Database Design
 
@@ -322,8 +320,6 @@ The application performs CRUD operations and supports searching, sorting, filter
 
 The deployed application can be accessed through the Render URL.
 
-**Deployment URL:**  
-https://backend-development-labs-3-1kbm.onrender.com
 
 ## 16. Learning Outcomes
 

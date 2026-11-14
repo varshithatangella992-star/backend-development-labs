@@ -81,18 +81,33 @@ The generated JWT token was decoded using jwt.io to inspect its header and paylo
 
 The SQLite database was checked to verify that passwords are stored as bcrypt hashes instead of plain text.
 
+
 ## 7. Screenshots
 
-All screenshots are available in the `screenshots` folder.
+### Registration
 
-1. `screenshots/register-success.png`
-2. `screenshots/register-duplicate.png`
-3. `screenshots/register-validation.png`
-4. `screenshots/login-success.png`
-5. `screenshots/login-wrong-password.png`
-6. `screenshots/login-unknown-user.png`
-7. `screenshots/jwt-decoded.png`
-8. `screenshots/password-hash.png`
+![Successful Registration](screenshots/register-success.png)
+
+![Duplicate Username](screenshots/register-duplicate.png)
+
+![Registration Validation](screenshots/register-validation.png)
+
+### Login
+
+![Successful Login](screenshots/login-success.png)
+
+![Wrong Password](screenshots/login-wrong-password.png)
+
+![Unknown Username](screenshots/login-unknown-user.png)
+
+### JWT Verification
+
+![JWT Decoded](screenshots/jwt-decoded.png)
+
+### Password Hashing
+
+![Password Hash](screenshots/password-hash.png)
+
 
 ## 8. Deployment
 

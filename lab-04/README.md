@@ -96,7 +96,7 @@ All screenshots are available in the `screenshots` folder.
 
 ## 8. Deployment
 
-This project was tested and executed locally. It has not been deployed online.
+This project was tested and executed locally.
 
 ## 9. Security Notes
 
